@@ -1,0 +1,20 @@
+{
+  "name": "@current-finance/examples",
+  "version": "0.0.1",
+  "description": "Examples for Current Finance SDK",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "@cetusprotocol/aggregator-sdk": "1.4.2",
+    "@mysten/sui": "2.15.0",
+    "@current-finance/current-sdk": "workspace:*",
+    "dotenv": "^16.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.130",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "current-protocol-monorepo",
+  "version": "2.0.0",
+  "private": true,
+  "workspaces": [
+    "sdk",
+    "examples"
+  ],
+  "scripts": {
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "@mysten/sui": "2.15.0"
+    }
+  }
+}

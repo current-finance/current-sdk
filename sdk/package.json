@@ -1,0 +1,66 @@
+{
+  "name": "@current-finance/current-sdk",
+  "version": "2.0.0",
+  "description": "TypeScript SDK for Current Finance",
+  "main": "dist/src/index.js",
+  "module": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/src/index.js",
+      "require": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
+    }
+  },
+  "type": "module",
+  "files": [
+    "dist/src/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "NODE_OPTIONS='--experimental-vm-modules' jest",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts --fix"
+  },
+  "keywords": [
+    "sui",
+    "defi",
+    "lending",
+    "current"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/current-finance/current-sdk.git"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "dependencies": {
+    "@cetusprotocol/aggregator-sdk": "1.4.9",
+    "@mysten/sui": "^2.15.0",
+    "@noble/hashes": "^2.0.1",
+    "@pythnetwork/pyth-sui-js": "^3.0.0",
+    "axios": "^1.11.0",
+    "bn.js": "^5.2.3",
+    "buffer": "^6.0.3",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.2.0",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^18.16.3",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
+    "@typescript-eslint/parser": "^8.38.0",
+    "csv-parse": "^6.2.1",
+    "eslint": "^9.32.0",
+    "globals": "^16.3.0",
+    "jest": "^30.0.5",
+    "ts-jest": "^29.4.0",
+    "ts-node": "^10.9.1",
+    "tsx": "^4.20.4",
+    "typescript": "^5.0.0"
+  }
+}

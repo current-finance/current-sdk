@@ -1,0 +1,198 @@
+{
+  "network": "mainnet",
+  "timestamp": "2026-03-13T11:34:10.094Z",
+  "coins": {
+    "dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC": {
+      "id": "0x75cfbbf8c962d542e99a1d15731e6069f60a00db895407785b15d14f606f2b4a",
+      "decimals": 6,
+      "name": "USDC",
+      "symbol": "USDC",
+      "description": "USDC is a US dollar-backed stablecoin issued by Circle. USDC is designed to provide a faster, safer, and more efficient way to send, spend, and exchange money around the world.",
+      "iconUrl": "https://circle.com/usdc-icon"
+    },
+    "0000000000000000000000000000000000000000000000000000000000000002::sui::SUI": {
+      "id": "0xf256d3fb6a50eaa748d94335b34f2982fbc3b63ceec78cafaa29ebc9ebaf2bbc",
+      "decimals": 9,
+      "name": "Sui",
+      "symbol": "SUI",
+      "description": "",
+      "iconUrl": null
+    },
+    "bde4ba4c2e274a60ce15c1cfff9e5c42e41654ac8b6d906a57efa4bd3c29f47d::hasui::HASUI": {
+      "id": "0x2c5f33af93f6511df699aaaa5822d823aac6ed99d4a0de2a4a50b3afa0172e24",
+      "decimals": 9,
+      "name": "haSUI",
+      "symbol": "haSUI",
+      "description": "haSUI is a staking token of SUI",
+      "iconUrl": "https://assets.haedal.xyz/logos/hasui.svg"
+    },
+    "d1b72982e40348d069bb1ff701e634c117bb5f741f44dff91e472d3b01461e55::stsui::STSUI": {
+      "id": "0x99235d8d9f508bed2799e1eef59a7622405bc74c50f32cefdc9ec19344ad2cec",
+      "decimals": 9,
+      "name": "AlphaFi Staked SUI",
+      "symbol": "stSUI",
+      "description": "Instantly unstakable liquid staking token by AlphaFi",
+      "iconUrl": "https://images.alphafi.xyz/stSUI.png"
+    },
+    "deeb7a4662eec9f2f3def03fb937a663dddaa2e215b8078a284d026b7946c270::deep::DEEP": {
+      "id": "0x3f2afb7c5f245870a8b8a3808e6dd7042446a0e7504e9d2795372da053858cd9",
+      "decimals": 6,
+      "name": "DeepBook Token",
+      "symbol": "DEEP",
+      "description": "The DEEP token secures the DeepBook protocol, the premier wholesale liquidity venue for on-chain trading.",
+      "iconUrl": "https://images.deepbook.tech/icon.svg"
+    },
+    "375f70cf2ae4c00bf37117d0c85a2c71545e6ee05c4a5c7d282cd66a4504b068::usdt::USDT": {
+      "id": "0xda61b33ac61ed4c084bbda65a2229459ed4eb2185729e70498538f0688bec3cc",
+      "decimals": 6,
+      "name": "Tether",
+      "symbol": "USDT",
+      "description": "Bridged Tether token",
+      "iconUrl": "https://bridge-assets.sui.io/usdt.png"
+    },
+    "549e8b69270defbfafd4f94e17ec44cdbdd99820b33bda2278dea3b9a32d3f55::cert::CERT": {
+      "id": "0xabd84a23467b33854ab25cf862006fd97479f8f6f53e50fe732c43a274d939bd",
+      "decimals": 9,
+      "name": "Volo Staked SUI",
+      "symbol": "vSUI",
+      "description": "Volo's SUI staking solution provides the best user experience and highest level of decentralization, security, combined with an attractive reward mechanism and instant staking liquidity through a bond-like synthetic token called voloSUI.",
+      "iconUrl": "https://s2.coinmarketcap.com/static/img/coins/64x64/29401.png"
+    },
+    "f325ce1300e8dac124071d3152c5c5ee6174914f8bc2161e88329cf579246efc::afsui::AFSUI": {
+      "id": "0x2f9217f533e51334873a39b8026a4aa6919497b47f49d0986a4f1aec66f8a34d",
+      "decimals": 9,
+      "name": "afSUI",
+      "symbol": "AFSUI",
+      "description": "Aftermath Staked Sui",
+      "iconUrl": "https://aftermath.finance/coins/afsui.svg"
+    },
+    "9d297676e7a4b771ab023291377b2adfaa4938fb9080b8d12430e4b108b836a9::xaum::XAUM": {
+      "id": "0x60ac47b58d87e303762a3bf8d004248bca2503be2a8e8b0b82ddfbce839ca025",
+      "decimals": 9,
+      "name": "Matrixdock Gold",
+      "symbol": "XAUM",
+      "description": "Matrixdock Gold (XAUm) is a standardized token deployed on multiple chains, with a 1:1 peg to 1 troy oz. fine weight of high grade LBMA gold. The total supply of XAUm will always be equal to the amount of underlying assets stored in highly secured and reputable vaults.",
+      "iconUrl": "https://app.matrixdock.com/images/xaum/xaum-64x64-icon.png"
+    },
+    "876a4b7bce8aeaef60464c11f4026903e9afacab79b9b142686158aa86560b50::xbtc::XBTC": {
+      "id": "0x907bb173bffab7c57bbd3350a633aa32c8770937b496d7d88874087b59200bcc",
+      "decimals": 8,
+      "name": "OKX Wrapped BTC",
+      "symbol": "xBTC",
+      "description": "A wrapped BTC that is backed 1:1 by Bitcoin (BTC) securely held by OKX",
+      "iconUrl": "https://static.coinall.ltd/cdn/oksupport/common/20250512-095503.72e1f41d9b9a06.png"
+    },
+    "960b531667636f39e85867775f52f6b1f220a058c4de786905bdf761e06a56bb::usdy::USDY": {
+      "id": "0x81b008387aa52c1a18d3db8e51d1d78d31dbea6295b3cabddbe1fa3c5c00e9c4",
+      "decimals": 6,
+      "name": "Ondo US Dollar Yield",
+      "symbol": "USDY",
+      "description": "Ondo US Dollar Yield",
+      "iconUrl": "https://ondo.finance/images/tokens/usdy.svg"
+    },
+    "aafb102dd0902f5055cadecd687fb5b71ca82ef0e0285d90afde828ec58ca96b::btc::BTC": {
+      "id": "0x53e1cae1ad70a778d0b450d36c7c2553314ca029919005aad26945d65a8fb784",
+      "decimals": 8,
+      "name": "Wrapped Bitcoin",
+      "symbol": "wBTC",
+      "description": "wBTC by Sui Bridge",
+      "iconUrl": "https://bridge-assets.sui.io/suiWBTC.png"
+    },
+    "d0e89b2af5e4910726fbcd8b8dd37bb79b29e5f83f7491bca830e94f7f226d29::eth::ETH": {
+      "id": "0x89b04ba87f8832d4d76e17a1c9dce72eb3e64d372cf02012b8d2de5384faeef0",
+      "decimals": 8,
+      "name": "ETH by Sui Bridge",
+      "symbol": "ETH",
+      "description": "Bridged Ether by Sui Bridge",
+      "iconUrl": "https://bridge-assets.sui.io/eth.png"
+    },
+    "356a26eb9e012a68958082340d4c4116e7f55615cf27affcff209cf0ae544f59::wal::WAL": {
+      "id": "0xb6a0c0bacb1c87c3be4dff20c22ef1012125b5724b5b0ff424f852a2651b23fa",
+      "decimals": 9,
+      "name": "WAL Token",
+      "symbol": "WAL",
+      "description": "The native token for the Walrus Protocol.",
+      "iconUrl": "https://www.walrus.xyz/wal-icon.svg"
+    },
+    "e14726c336e81b32328e92afc37345d159f5b550b09fa92bd43640cfdd0a0cfd::usdb::USDB": {
+      "id": "0x3f50378adb693c70172786ca559914e8876de228c9589e682479623a3757ac80",
+      "decimals": 6,
+      "name": "Bucket USD",
+      "symbol": "USDB",
+      "description": "USDB is a decentralized, overcollateralized stablecoin of bucketprotocol.io, pegged to 1 USD and backed by crypto assets via CDP and PSM mechanisms.",
+      "iconUrl": "https://www.bucketprotocol.io/icons/USDB.svg"
+    },
+    "3e8e9423d80e1774a7ca128fccd8bf5f1f7753be658c5e645929037f7c819040::lbtc::LBTC": {
+      "id": "0xcace3558c4434fa5402fbe57840e4889c6ae71b79d9b0bd5c42c3b9986b42900",
+      "decimals": 8,
+      "name": "Lombard Staked BTC",
+      "symbol": "LBTC",
+      "description": "Lombard connects Bitcoin to DeFi through LBTC, the Universal Liquid Bitcoin Standard. Backed 1:1 by BTC, LBTC is yield-bearing, cross-chain, and enables BTC holders to earn Babylon staking yields, trade, borrow, lend, and yield farm.",
+      "iconUrl": "https://www.lombard.finance/lbtc/LBTC.png"
+    },
+    "f16e6b723f242ec745dfd7634ad072c42d5c1d9ac9d62a39c381303eaa57693a::fdusd::FDUSD": {
+      "id": "0x190f40011fdf9716d3078f87e73a5c041dd535b44574f0c7357792594b7cebba",
+      "decimals": 6,
+      "name": "First Digital USD",
+      "symbol": "FDUSD",
+      "description": "First Digital USD",
+      "iconUrl": "https://cdn.1stdigital.com/icon/fdusd.svg"
+    },
+    "66629328922d609cf15af779719e248ae0e63fe0b9d9739623f763b33a9c97da::esui::ESUI": {
+      "id": "0xc83f39c33f2a44a5e79237f7b082f90fedb3f8bdb216eb6fe73a059440460d13",
+      "decimals": 9,
+      "name": "Ember SUI",
+      "symbol": "eSUI",
+      "description": "This receipt token represents the shares a user has of the Ember SUI Vault on Ember Protocol",
+      "iconUrl": "https://bluefin.io/images/logos/egSUI.svg"
+    },
+    "89b0d4407f17cc1b1294464f28e176e29816a40612f7a553313ea0a797a5f803::ethird::ETHIRD": {
+      "id": "0xaba2837485ebfde46a54be070733c8b3be35908f8c4b55472d18eb417fe40b7e",
+      "decimals": 6,
+      "name": "Ember Third Eye",
+      "symbol": "eTHIRD",
+      "description": "This receipt token represents the shares a user has of the Ember Third Eye Vault on Ember Protocol",
+      "iconUrl": "https://bluefin.io/images/logos/egUSDC.svg"
+    },
+    "34469c8accdd673df02600265cbbad3688577f0e716866e257f88d448d463492::eearn::EEARN": {
+      "id": "0x31292c0b53efd88cf747b68a25a04a3bc1276e846fa019287d90e9fdc46a01a3",
+      "decimals": 6,
+      "name": "Ember Earn",
+      "symbol": "eEARN",
+      "description": "This receipt token represents the shares a user has of the Ember Earn Vault on Ember Protocol",
+      "iconUrl": "https://cdn.bluefin.io/images/eEARN.svg"
+    },
+    "44f838219cf67b058f3b37907b655f226153c18e33dfcd0da559a844fea9b1c1::usdsui::USDSUI": {
+      "id": "0x535e826a2acddab687c81cb6c6166553b479f61a9023800ec0020baba8d94731",
+      "decimals": 6,
+      "name": "Sui Dollar",
+      "symbol": "USDSUI",
+      "description": "USDsui is Sui's native, USD-backed stablecoin, issued via Bridge's Open Issuance platform and built for regulatory compliance. It powers payments, DeFi, and on-chain commerce across the Sui ecosystem, while seamlessly interoperating with other Bridge-issued stablecoins to enable global liquidity.",
+      "iconUrl": "https://token-metadata.bridge.xyz/images/usd_sui.png"
+    },
+    "41d587e5336f1c86cad50d38a7136db99333bb9bda91cea4ba69115defeb1402::sui_usde::SUI_USDE": {
+      "id": "0x44f0959110bd9e5e91af0483364c42075ac19f173b28f708989f419ef3560576",
+      "decimals": 6,
+      "name": "eSui Dollar",
+      "symbol": "suiUSDe",
+      "description": "eSui Dollar is a synthetic dollar built on Sui and powered by Ethena, backed by a mix of digital assets and corresponding hedging strategies. It is designed for DeFi use cases, including on-chain liquidity and composable strategies. Net income generated by eSui Dollar is directed back into the Sui ecosystem to support long-term network growth.",
+      "iconUrl": "https://sui.io/suiUSDe_icon"
+    },
+    "83556891f4a0f233ce7b05cfe7f957d4020492a34f5405b2cb9377d060bef4bf::spring_sui::SPRING_SUI": {
+      "id": "0x06e4724ae397623b3024ed80641b57cb80397c8a8c54552241fb994be4087d9a",
+      "decimals": 9,
+      "name": "Spring SUI",
+      "symbol": "sSUI",
+      "description": "Infinitely liquid staking on Sui",
+      "iconUrl": "https://suilend-assets.s3.us-east-2.amazonaws.com/lst.png"
+    },
+    "3a304c7feba2d819ea57c3542d68439ca2c386ba02159c740f7b406e592c62ea::haedal::HAEDAL": {
+      "id": "0xe8a1efdd377e35f6b6c72ae6446c646696a477cb0d2b5bc81f9e3b83b6ec3772",
+      "decimals": 9,
+      "name": "Haedal",
+      "symbol": "HAEDAL",
+      "description": "",
+      "iconUrl": "https://node1.irys.xyz/Rp80fmqZS3qBDnfyxyKEvc65nVdTunjOG3NY8T6AjpI"
+    }
+  }
+}

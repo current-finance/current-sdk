@@ -1,0 +1,55 @@
+# dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+#ide
+.idea
+.vscode
+
+# production
+/**/build
+/**/dist
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# local config (use config.json.example as template)
+config.json
+**/config.json
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# logs
+*.log*
+
+# generate files
+object-ids.json
+object-ids.*.json
+
+*.coverage_map.mvcov
+*.trace
+
+examples/.env
