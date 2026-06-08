@@ -11,7 +11,7 @@ const MARKET_NAME = 'MainMarket';
 /** Repay the SUI debt from `borrow.ts` (same min units). */
 const COIN_SUI =
   '0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI';
-const AMOUNT_REPAY_SUI = 5_000_000_000n;
+const AMOUNT_REPAY_SUI = 5_100_000_000n;
 const OBLIGATION_OWNER_CAP_ID = ''; // TODO: Replace with your ObligationOwnerCap ID
 
 async function repay() {

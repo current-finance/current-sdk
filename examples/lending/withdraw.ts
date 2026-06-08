@@ -13,7 +13,7 @@ const NETWORK = 'mainnet';
 const MARKET_NAME = 'MainMarket';
 const COIN_USDC =
   '0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC';
-const AMOUNT_WITHDRAW_USDC = 5_000_000n;
+const AMOUNT_WITHDRAW_USDC = 12_000_000n;
 const OBLIGATION_OWNER_CAP_ID = ''; // TODO: Replace with your ObligationOwnerCap ID
 
 async function withdraw() {
