@@ -3,6 +3,7 @@ import { fromBase64 } from '@mysten/sui/utils';
 import {
   LendingClient,
   LiquidityMiningClient,
+  ReadOnlyXOracleClient,
   RewardType,
 } from '../../index.js';
 import type {
@@ -26,7 +27,7 @@ const DEEP =
 // Hardcoded mainnet baseline so the assertion isn't a tautology against config.
 const MAINNET = {
   protocolPackageId:
-    '0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf',
+    '0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70',
   protocolAppId:
     '0xd4395f77a48f6d64af2008280c8dc06ee0fe69953a141e683935f6086d849177',
   mainMarketObjectId:
@@ -40,7 +41,10 @@ function makeClient(): LiquidityMiningClient {
   // protocolPackageId/protocolAppId, but also assert here that those config
   // values still match the hardcoded baseline. If networks.ts is tampered,
   // this check is the canary before the PTB check.
-  const lending = LendingClient.fromConfig({ network: NETWORK });
+  //
+  // Reward claims never refresh the oracle, so a read-only refresher (which throws if asked to refresh)
+  // is enough here — and documents that the claim path emits no refresh calls.
+  const lending = LendingClient.fromConfig({ network: NETWORK }, new ReadOnlyXOracleClient());
   expect(lending.config.protocolPackageId).toBe(MAINNET.protocolPackageId);
   expect(lending.config.protocolAppId).toBe(MAINNET.protocolAppId);
   return lending.getLiquidityMiningClient();
@@ -252,3 +256,4 @@ describe('LiquidityMiningClient PTB shape', () => {
     expect(tx.getData().commands).toHaveLength(0);
   });
 });
+

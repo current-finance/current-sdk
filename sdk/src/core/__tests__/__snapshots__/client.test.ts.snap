@@ -7,7 +7,7 @@ exports[`LendingClient PTB shape populateBorrowTransactionWithAllAssets — corr
     "function": "refresh_usd_price",
     "kind": "MoveCall",
     "module": "user_oracle",
-    "package": "0x144c57d6014488bc71c0902bddff482af090d13e2c61333ed903fe088220a92c",
+    "package": "0xec244262968307f6b502f28bbf03aed94140e7467d1638b01a29ec5cc43fd769",
     "typeArguments": [
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
     ],
@@ -17,7 +17,7 @@ exports[`LendingClient PTB shape populateBorrowTransactionWithAllAssets — corr
     "function": "refresh_usd_price",
     "kind": "MoveCall",
     "module": "user_oracle",
-    "package": "0x144c57d6014488bc71c0902bddff482af090d13e2c61333ed903fe088220a92c",
+    "package": "0xec244262968307f6b502f28bbf03aed94140e7467d1638b01a29ec5cc43fd769",
     "typeArguments": [
       "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
     ],
@@ -27,7 +27,7 @@ exports[`LendingClient PTB shape populateBorrowTransactionWithAllAssets — corr
     "function": "borrow",
     "kind": "MoveCall",
     "module": "borrow",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
@@ -47,7 +47,7 @@ exports[`LendingClient PTB shape populateEnterMarketAndDepositTxn — enter + de
     "function": "enter_market_return",
     "kind": "MoveCall",
     "module": "enter_market",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
     ],
@@ -57,7 +57,7 @@ exports[`LendingClient PTB shape populateEnterMarketAndDepositTxn — enter + de
     "function": "deposit",
     "kind": "MoveCall",
     "module": "deposit",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
@@ -77,7 +77,7 @@ exports[`LendingClient PTB shape populateEnterMarketTxn — correct package, mod
     "function": "enter_market_return",
     "kind": "MoveCall",
     "module": "enter_market",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
     ],
@@ -92,7 +92,7 @@ exports[`LendingClient PTB shape populateRepayTxn — correct package, module, a
     "function": "repay",
     "kind": "MoveCall",
     "module": "repay",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
@@ -108,7 +108,7 @@ exports[`LendingClient PTB shape populateWithdrawTransactionWithAssets — corre
     "function": "refresh_usd_price",
     "kind": "MoveCall",
     "module": "user_oracle",
-    "package": "0x144c57d6014488bc71c0902bddff482af090d13e2c61333ed903fe088220a92c",
+    "package": "0xec244262968307f6b502f28bbf03aed94140e7467d1638b01a29ec5cc43fd769",
     "typeArguments": [
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
     ],
@@ -118,7 +118,7 @@ exports[`LendingClient PTB shape populateWithdrawTransactionWithAssets — corre
     "function": "refresh_usd_price",
     "kind": "MoveCall",
     "module": "user_oracle",
-    "package": "0x144c57d6014488bc71c0902bddff482af090d13e2c61333ed903fe088220a92c",
+    "package": "0xec244262968307f6b502f28bbf03aed94140e7467d1638b01a29ec5cc43fd769",
     "typeArguments": [
       "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
     ],
@@ -128,7 +128,7 @@ exports[`LendingClient PTB shape populateWithdrawTransactionWithAssets — corre
     "function": "withdraw",
     "kind": "MoveCall",
     "module": "withdraw",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
@@ -144,7 +144,7 @@ exports[`LendingClient PTB shape populatedDepositTxn — correct package, module
     "function": "deposit",
     "kind": "MoveCall",
     "module": "deposit",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",

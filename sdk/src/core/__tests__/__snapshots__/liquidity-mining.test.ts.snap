@@ -7,7 +7,7 @@ exports[`LiquidityMiningClient PTB shape populateClaimRewardAutoTransaction (dep
     "function": "claim_reward_as_coin",
     "kind": "MoveCall",
     "module": "liquidity_mining",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
@@ -23,7 +23,7 @@ exports[`LiquidityMiningClient PTB shape populateClaimRewardAutoTransaction (dep
     "function": "claim_reward_as_coin",
     "kind": "MoveCall",
     "module": "liquidity_mining",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
@@ -39,7 +39,7 @@ exports[`LiquidityMiningClient PTB shape populateClaimRewardAutoTransaction (dep
     "function": "claim_reward_as_coin",
     "kind": "MoveCall",
     "module": "liquidity_mining",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",
@@ -60,7 +60,7 @@ exports[`LiquidityMiningClient PTB shape populateClaimRewardTransaction — clai
     "function": "claim_reward_as_coin",
     "kind": "MoveCall",
     "module": "liquidity_mining",
-    "package": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf",
+    "package": "0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70",
     "typeArguments": [
       "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
       "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI",

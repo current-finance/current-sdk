@@ -28,14 +28,9 @@ and referrals (generate/look up codes, check status, claim rebates).
 ```bash
 pnpm install                       # from the repo root, if not done already
 cd examples
-cp .env.example .env               # then set PRIVATE_KEY (see below)
 
-pnpm tsx lending/market-detail.ts  # read-only, no key required
-pnpm tsx lending/enter-and-deposit.ts
+pnpm run example:enter-and-deposit
 ```
-
-Scripts that send transactions read a `PRIVATE_KEY` from `examples/.env`. Both the
-Sui `suiprivkey1...` format and a raw hex key (with or without `0x`) are supported.
 
 > ⚠️ Use a dedicated test wallet. Never commit a key or use one that holds significant funds.
 

@@ -1,16 +1,14 @@
 // Core exports
 export { LendingClient, collateralAmountFromDebtAmount } from './core/client';
-// export { LeverageClient } from './core/leverage-client';
-// export type { LeverageMarketConfig } from './core/leverage-client';
-export * from './core/leverage';
-export * from './core/flp';
-export * from './core/quote';
+export {
+  XOracleClient,
+  ReadOnlyXOracleClient,
+  type OracleRefresher,
+  OracleUpdateClient,
+} from './core/oracle';
+
 export * from './core/query';
 export * from './core/liquidity-mining';
-export * from './dex';
-
-// Leverage exports
-export * from './leverage-types';
 
 // Type exports
 export {
@@ -47,15 +45,14 @@ export {
 // Utility exports
 export * from './utils/coin-metadata';
 export * from './utils/transaction-utils';
-export { getPythConfig, fetchPythPrices, type PythConfig, type PythFeedConfig } from './utils/pyth-utils';
 export {
-  type ReserveSnapshot,
-  getReserveIds,
-  queryReserveIds,
-  getAllReserveSnapshots,
-  deriveReserveBalanceFieldId,
-} from './utils/reserve-snapshot';
-export { getPackageDigest } from './utils/package-digest';
+  StorkClient,
+  StorkUpdateGetter,
+  type StorkConfig,
+  type StorkUpdateRow,
+  type TemporalNumericValue,
+} from './utils/stork-client';
+export * from './utils/pyth-pro-client';
 
 // Config exports
 export * from './config/networks';

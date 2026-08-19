@@ -1,13 +1,12 @@
 import { Transaction } from '@mysten/sui/transactions';
 import { fromBase64 } from '@mysten/sui/utils';
-import { LendingClient } from '../../index.js';
+import { LendingClient, type OracleRefresher } from '../../index.js';
 
 // Test fixtures — distinctive values so failures point straight at the field
 // that broke.
 const NETWORK = 'mainnet';
 const RECIPIENT = '0x' + 'aa'.repeat(32);
 const OBLIGATION_CAP = '0x' + 'bb'.repeat(32);
-const PRICE_INFO_OBJECT = '0x' + 'cc'.repeat(32);
 
 const SUI =
   '0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI';
@@ -19,9 +18,9 @@ const USDC =
 // PTB's package field will diverge from these and the test fails loudly.
 const MAINNET = {
   protocolPackageId:
-    '0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf',
+    '0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70',
   xOraclePackageId:
-    '0x144c57d6014488bc71c0902bddff482af090d13e2c61333ed903fe088220a92c',
+    '0xec244262968307f6b502f28bbf03aed94140e7467d1638b01a29ec5cc43fd769',
   mainMarketObjectId:
     '0x41f3d76aee8b20e53f7d0d395fdc09e241e683c7bc5d0f69674b545ee42549df',
   mainMarketType:
@@ -29,33 +28,32 @@ const MAINNET = {
 } as const;
 
 /**
- * Build a LendingClient with the Pyth network calls stubbed out. The shape
- * tests don't care whether the actual VAA fetch is exercised — they care
- * that the PTB's MoveCall targets, packages, and transferObjects address
- * are wired correctly.
+ * A stub OracleRefresher that reproduces the on-chain refresh shape these PTB tests pin: one
+ * `user_oracle::refresh_usd_price<asset>` MoveCall per asset at the xOracle package, emitted in place of
+ * the real signed-update fetch. The production XOracleClient additionally pulls Pyth/Stork updates from a
+ * backend — out of scope here, where we only assert the borrow/withdraw command graph.
+ */
+function stubOracleRefresher(xOraclePackageId: string): OracleRefresher {
+  return {
+    async refreshOraclePrices(tx: Transaction, assets: string[]): Promise<void> {
+      for (const asset of assets) {
+        tx.moveCall({
+          target: `${xOraclePackageId}::user_oracle::refresh_usd_price`,
+          arguments: [tx.object(xOraclePackageId), tx.object('0x6'), tx.pure.bool(true)],
+          typeArguments: [asset],
+        });
+      }
+    },
+  };
+}
+
+/**
+ * Build a LendingClient with the oracle refresh stubbed out. The shape tests don't care whether the
+ * actual signed-update fetch is exercised — they care that the PTB's MoveCall targets, packages, and
+ * transferObjects address are wired correctly.
  */
 function makeClient(): LendingClient {
-  const client = LendingClient.fromConfig({ network: NETWORK });
-
-  type Mut = {
-    pythClient: {
-      getPriceFeedObjectId: (id: string) => Promise<string>;
-      updatePriceFeeds: (tx: unknown, data: unknown, ids: string[]) => Promise<string[]>;
-    };
-    pythConnnection: {
-      getPriceFeedsUpdateData: (ids: string[]) => Promise<Uint8Array[]>;
-    };
-  };
-  const mut = client as unknown as Mut;
-  mut.pythClient = {
-    getPriceFeedObjectId: async () => PRICE_INFO_OBJECT,
-    updatePriceFeeds: async (_tx, _data, ids) => ids.map(() => PRICE_INFO_OBJECT),
-  };
-  mut.pythConnnection = {
-    getPriceFeedsUpdateData: async (ids) => ids.map(() => new Uint8Array()),
-  };
-
-  return client;
+  return LendingClient.fromConfig({ network: NETWORK }, stubOracleRefresher(MAINNET.xOraclePackageId));
 }
 
 /**
@@ -354,3 +352,4 @@ describe('LendingClient PTB shape', () => {
     expect(commandSummary(tx)).toMatchSnapshot();
   });
 });
+
