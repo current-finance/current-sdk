@@ -3,7 +3,7 @@ import { Transaction } from '@mysten/sui/transactions';
 import { bcs } from '@mysten/sui/bcs';
 import { normalizeSuiAddress, normalizeStructTag } from '@mysten/sui/utils';
 import { TypeName } from '../market-types';
-import { getDynamicFieldJsonOrNull, getDynamicFieldJsonOrThrow } from '../utils/object-utils';
+import { getDynamicFieldJsonOrNull } from '../utils/object-utils';
 import { simulateTransactionChecked } from '../utils/transaction-utils';
 
 export interface ReferralRebates {
@@ -36,7 +36,7 @@ export class ReferralClient {
 
 
   private async getReferralKeyFields(): Promise<RawReferralKey | undefined> {
-    const referralKeyType = `${this.protocolPackageId}::app::ReferralKey`;
+    const referralKeyType = `0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::app::ReferralKey`;
     const json = await getDynamicFieldJsonOrNull<{ value: RawReferralKey }>(
       this.client,
       this.protocolAppId,
@@ -210,15 +210,17 @@ export class ReferralClient {
       throw new Error('Failed to get accumulated deposit USD by address');
     }
 
-    const entryJson = await getDynamicFieldJsonOrThrow(
+    // An address that has never accumulated a referred deposit simply has no entry in the table, so
+    // there's no dynamic field object to read. That's not an error — it's a zero balance. Use the
+    // OrNull lookup (like getLinkedReferralCode above) and fall back to 0 instead of throwing
+    // "Object ... not found".
+    const entryJson = await getDynamicFieldJsonOrNull<{ value: string }>(
       this.client,
       tableId,
       'address',
       bcs.Address.serialize(normalizeSuiAddress(address)).toBytes(),
     );
-    const value = entryJson.value;
-    return BigInt(value ?? '0');
-    
+    return BigInt(entryJson?.value ?? '0');
   }
 
   public async getReferrerAddressForReferralCode(referralCode: string): Promise<ReferrerLookupResult> {

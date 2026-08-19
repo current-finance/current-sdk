@@ -53,15 +53,48 @@ export interface NetworkConfig {
   leverageMarkets: LeverageMarket[];
   protocolAppId: string;
   leverageAppId: string;
+  xOracle: { [key: TypeName]: OracleAssetConfig },
+}
+
+/** x_oracle source ids (see `x_oracle::asset`). Pyth Pro is always the primary here. */
+export const SOURCE_ID = {
+  PYTH: 1,
+  STORK: 2,
+  ADMIN_REF: 255,
+} as const;
+
+
+/** One asset's oracle wiring, as stored in `config/oracle-asset-config.json`. */
+export interface OracleAssetConfig {
+  config: {
+    baseTokenId: number;
+    primarySourceId: number;
+    checkSourceId: number;
+    lowerBoundBps: number;
+    upperBoundBps: number;
+    maxUpdateTimeGapMs: number;
+  };
+  /** Set iff `config.checkSourceId === SOURCE_ID.PYTH || config.primarySourceId === SOURCE_ID.PYTH`.. */
+  pyth: {
+    /** Pyth Lazer feed id. */
+    feedId: number;
+    /** Lazer delivery channel id: 1=real_time, 2=50ms, 3=200ms, 4=1000ms. */
+    channelId: number;
+    minPublishers: number;
+    spotConfBps: number;
+    emaConfBps: number;
+  } | null,
+  /** Set iff `config.checkSourceId === SOURCE_ID.STORK || config.primarySourceId === SOURCE_ID.STORK`.. */
+  stork: { feedName: string; emaFeedName: string } | null;
 }
 
 export const NETWORK_CONFIGS: Record<string, NetworkConfig> = {
   mainnet: {
     'flpPackageId': '0xfbb9f951e243560e46ba65aed64105e4bc7c5e874b35fabf23259bec4458eccf',
     'flpAppId': '0x2bb9fb6913c1a8061a21876016b464077051c2914dd8bcd4d6cdb05a5884cc45',
-    'protocolPackageId': '0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf',
-    'leveragePackageId': '0x042a1a418bf977d5306aa783288eebbc2e3ca9200b533fba7feda521e60d199e',
-    'xOraclePackageId': '0x144c57d6014488bc71c0902bddff482af090d13e2c61333ed903fe088220a92c',
+    'protocolPackageId': '0x45bae0425e9098ce5cba3d3fa2836220ad24c9f88aa0dffffb5a52b49319fc70',
+    'leveragePackageId': '0xaab00c7753c4843716981350f869af1d0e57de360d3f5f5a3da5a52cd2aade47',
+    'xOraclePackageId': '0xec244262968307f6b502f28bbf03aed94140e7467d1638b01a29ec5cc43fd769',
     'coinDecimalsRegistryId': '0x53785858526d8ed3826cfc245b0fd53f16179036f38fc024c3851ef07b1538d7',
     'xOracleId': '0x7aca2c7d1aa11640f8de16c4b6a2c3a672eb69872eddd59ed22a073908840e1a',
     'leverageAppId': '0xbfcd97b3f7219373c6f0a4cf556ab2e3a92d7879ab94c88efdd355a2bf80bc27',
@@ -91,6 +124,8 @@ export const NETWORK_CONFIGS: Record<string, NetworkConfig> = {
               '876a4b7bce8aeaef60464c11f4026903e9afacab79b9b142686158aa86560b50::xbtc::XBTC',
               'e14726c336e81b32328e92afc37345d159f5b550b09fa92bd43640cfdd0a0cfd::usdb::USDB',
               'aafb102dd0902f5055cadecd687fb5b71ca82ef0e0285d90afde828ec58ca96b::btc::BTC',
+              '8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN',
+              '7a479e7a6e75323ac9125656a9ca795e11ea42165ac4206af44d1b66e9563be9::svbtc::SVBTC',
             ],
           },
           {
@@ -193,6 +228,23 @@ export const NETWORK_CONFIGS: Record<string, NetworkConfig> = {
               '375f70cf2ae4c00bf37117d0c85a2c71545e6ee05c4a5c7d282cd66a4504b068::usdt::USDT',
             ],
           },
+          {
+            'emodeId': 13,
+            'name': 'usdcsui',
+            'assets': [
+              'dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC',
+              '0000000000000000000000000000000000000000000000000000000000000002::sui::SUI',
+            ],
+          },
+          {
+            'emodeId': 14,
+            'name': 'svbtcloop',
+            'assets': [
+              'dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC',
+              '7a479e7a6e75323ac9125656a9ca795e11ea42165ac4206af44d1b66e9563be9::svbtc::SVBTC',
+              '375f70cf2ae4c00bf37117d0c85a2c71545e6ee05c4a5c7d282cd66a4504b068::usdt::USDT',
+            ],
+          },
         ],
         'reserveIds': {
           '0000000000000000000000000000000000000000000000000000000000000002::sui::SUI': {
@@ -258,6 +310,10 @@ export const NETWORK_CONFIGS: Record<string, NetworkConfig> = {
           '375f70cf2ae4c00bf37117d0c85a2c71545e6ee05c4a5c7d282cd66a4504b068::usdt::USDT': {
             'reserveId': '0xfe32ca9d6650de914d6e0d97e7409a2f3bf7c314d7c532c090a8d54941662082',
             'balanceId': '0x17ae9bb0db0d8feaeceecc554523ba3ed8a31cb140cce727f0a0790e98348c5f',
+          },
+          '8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN': {
+            'reserveId': '0xa4743a995f2f6c3361ecce1f7a70bfc7a09a053a45ffd223581ea488d43e340f',
+            'balanceId': '0xac8276b62be0d2ed297e8d38fec6449ae5354f97e538897bef441fe072350c24'
           },
         },
       },
@@ -415,6 +471,29 @@ export const NETWORK_CONFIGS: Record<string, NetworkConfig> = {
           },
         },
       },
+      {
+        'name': 'Market01',
+        'type': '0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::Market01',
+        'objectId': '0x2d682541f1e983e48d5c628f013d11d4c8f96f410338532791d3ece882766220',
+        'emodeGroups': [
+          {
+            'emodeId': 0,
+            'name': 'default',
+            'assets': [
+              'dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC'
+            ],
+          },
+          {
+            'emodeId': 1,
+            'name': 'susnmultiply',
+            'assets': [
+              'dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC',
+              '0a672389b7b73df60d40666ac9545433d59d3128086b9e3a425a66bbffdf4dc5::susn::SUSN'
+            ],
+          },
+        ],
+        "reserveIds": {}
+      },
     ],
     'leverageMarkets': [
       {
@@ -529,7 +608,43 @@ export const NETWORK_CONFIGS: Record<string, NetworkConfig> = {
         'objectId': '0x9ebdde67886c5bf617d312d844ee02af4adc94c741c5d2e0f6f950ccb19b12cd',
         'emodeId': 11,
       },
+      {
+        'lendingMarketType': '0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket',
+        'lendingMarketId': '0x41f3d76aee8b20e53f7d0d395fdc09e241e683c7bc5d0f69674b545ee42549df',
+        'lendingMarketName': 'MainMarket',
+        'objectId': '0xb4a9eecd24bff4ccfc6523e8615cc73c66f569dccd6dbef48edbdba6405b17d2',
+        'emodeId': 13,
+      },
     ],
+    'xOracle': {
+      "0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI": {  "pyth": { "feedId": 11, "channelId": 4, "minPublishers": 3, "spotConfBps": 200, "emaConfBps": 100 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 15000 }, "stork": { "feedName": "SUIUSD", "emaFeedName": "SUIUSD" } },
+      "0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC": {  "pyth": { "feedId": 7, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0x375f70cf2ae4c00bf37117d0c85a2c71545e6ee05c4a5c7d282cd66a4504b068::usdt::USDT": {  "pyth": { "feedId": 8, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0x960b531667636f39e85867775f52f6b1f220a058c4de786905bdf761e06a56bb::usdy::USDY": {  "pyth": { "feedId": 276, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 80 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0xe14726c336e81b32328e92afc37345d159f5b550b09fa92bd43640cfdd0a0cfd::usdb::USDB": {  "pyth": { "feedId": 2320, "channelId": 4, "minPublishers": 1, "spotConfBps": 400, "emaConfBps": 200 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0xf16e6b723f242ec745dfd7634ad072c42d5c1d9ac9d62a39c381303eaa57693a::fdusd::FDUSD": {  "pyth": { "feedId": 88, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0x44f838219cf67b058f3b37907b655f226153c18e33dfcd0da559a844fea9b1c1::usdsui::USDSUI": {  "pyth": { "feedId": 3049, "channelId": 4, "minPublishers": 2, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0x41d587e5336f1c86cad50d38a7136db99333bb9bda91cea4ba69115defeb1402::sui_usde::SUI_USDE": {  "pyth": { "feedId": 2998, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0xbde4ba4c2e274a60ce15c1cfff9e5c42e41654ac8b6d906a57efa4bd3c29f47d::hasui::HASUI": { "pyth": { "feedId": 3244, "channelId": 4, "minPublishers": 2, "spotConfBps": 400, "emaConfBps": 200 }, "config": { "baseTokenId": 1, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0xd1b72982e40348d069bb1ff701e634c117bb5f741f44dff91e472d3b01461e55::stsui::STSUI": { "pyth": { "feedId": 736, "channelId": 4, "minPublishers": 3, "spotConfBps": 200, "emaConfBps": 100 }, "config": { "baseTokenId": 1, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0xf325ce1300e8dac124071d3152c5c5ee6174914f8bc2161e88329cf579246efc::afsui::AFSUI": { "pyth": { "feedId": 3245, "channelId": 4, "minPublishers": 2, "spotConfBps": 200, "emaConfBps": 100 }, "config": { "baseTokenId": 1, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0x549e8b69270defbfafd4f94e17ec44cdbdd99820b33bda2278dea3b9a32d3f55::cert::CERT": { "pyth": { "feedId": 2349, "channelId": 4, "minPublishers": 1, "spotConfBps": 200, "emaConfBps": 100 }, "config": { "baseTokenId": 1, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0x83556891f4a0f233ce7b05cfe7f957d4020492a34f5405b2cb9377d060bef4bf::spring_sui::SPRING_SUI": { "pyth": { "feedId": 11, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 100 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, "stork": { "feedName": "SUIUSD", "emaFeedName": "SUIUSD" } },
+      "0x34469c8accdd673df02600265cbbad3688577f0e716866e257f88d448d463492::eearn::EEARN": { "pyth": { "feedId": 3161, "channelId": 4, "minPublishers": 1, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0x66629328922d609cf15af779719e248ae0e63fe0b9d9739623f763b33a9c97da::esui::ESUI": { "pyth": { "feedId": 3180, "channelId": 4, "minPublishers": 1, "spotConfBps": 400, "emaConfBps": 200 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, "stork": null },
+      "0x89b0d4407f17cc1b1294464f28e176e29816a40612f7a553313ea0a797a5f803::ethird::ETHIRD": { "pyth": { "feedId": 3179, "channelId": 4, "minPublishers": 1, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0xaafb102dd0902f5055cadecd687fb5b71ca82ef0e0285d90afde828ec58ca96b::btc::BTC": { "pyth": { "feedId": 1, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 15000 }, "stork": { "feedName": "BTCUSD", "emaFeedName": "BTCUSD" } },
+      "0x8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN": { "pyth": { "feedId": 1, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 15000 }, "stork": { "feedName": "BTCUSD", "emaFeedName": "BTCUSD" } },
+      "0x7a479e7a6e75323ac9125656a9ca795e11ea42165ac4206af44d1b66e9563be9::svbtc::SVBTC": { "pyth": { "feedId": 1, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 15000 }, "stork": { "feedName": "BTCUSD", "emaFeedName": "BTCUSD" } },
+      "0xd0e89b2af5e4910726fbcd8b8dd37bb79b29e5f83f7491bca830e94f7f226d29::eth::ETH": { "pyth": { "feedId": 2, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 15000 }, "stork": { "feedName": "ETHUSD", "emaFeedName": "ETHUSD" } },
+      "0x9d297676e7a4b771ab023291377b2adfaa4938fb9080b8d12430e4b108b836a9::xaum::XAUM": { "pyth": { "feedId": 3207, "channelId": 4, "minPublishers": 1, "spotConfBps": 400, "emaConfBps": 200 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 500, "upperBoundBps": 500, "maxUpdateTimeGapMs": 15000 }, "stork": { "feedName": "XAUMUSD", "emaFeedName": "XAUMUSD" } },
+      "0x876a4b7bce8aeaef60464c11f4026903e9afacab79b9b142686158aa86560b50::xbtc::XBTC": { "pyth": { "feedId": 1598, "channelId": 4, "minPublishers": 3, "spotConfBps": 100, "emaConfBps": 50 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 1000, "upperBoundBps": 1000, "maxUpdateTimeGapMs": 15000 }, "stork": { "feedName": "BTCUSD", "emaFeedName": "BTCUSD" } },
+      "0x3e8e9423d80e1774a7ca128fccd8bf5f1f7753be658c5e645929037f7c819040::lbtc::LBTC": { "pyth": { "feedId": 468, "channelId": 4, "minPublishers": 3, "spotConfBps": 200, "emaConfBps": 100 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 2, "lowerBoundBps": 1000, "upperBoundBps": 1000, "maxUpdateTimeGapMs": 15000 }, "stork": { "feedName": "BTCUSD", "emaFeedName": "BTCUSD" } },
+      "0xdeeb7a4662eec9f2f3def03fb937a663dddaa2e215b8078a284d026b7946c270::deep::DEEP": { "pyth": { "feedId": 173, "channelId": 4, "minPublishers": 3, "spotConfBps": 400, "emaConfBps": 200 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 9999, "upperBoundBps": 9999, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      "0x356a26eb9e012a68958082340d4c4116e7f55615cf27affcff209cf0ae544f59::wal::WAL": { "pyth": { "feedId": 624, "channelId": 4, "minPublishers": 3, "spotConfBps": 400, "emaConfBps": 200 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 9999, "upperBoundBps": 9999, "maxUpdateTimeGapMs": 1209600000 }, stork: null },
+      // haedal is just price fetch only
+      "0x3a304c7feba2d819ea57c3542d68439ca2c386ba02159c740f7b406e592c62ea::haedal::HAEDAL": { "pyth": { "feedId": 648, "channelId": 4, "minPublishers": 3, "spotConfBps": 400, "emaConfBps": 200 }, "config": { "baseTokenId": 0, "primarySourceId": 1, "checkSourceId": 255, "lowerBoundBps": 100, "upperBoundBps": 100, "maxUpdateTimeGapMs": 1209600000 }, stork: null }
+    },
     'protocolAppId': '0xd4395f77a48f6d64af2008280c8dc06ee0fe69953a141e683935f6086d849177',
   },
 };

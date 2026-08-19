@@ -193,6 +193,30 @@
       "symbol": "HAEDAL",
       "description": "",
       "iconUrl": "https://node1.irys.xyz/Rp80fmqZS3qBDnfyxyKEvc65nVdTunjOG3NY8T6AjpI"
+    },
+    "8f2b5eb696ed88b71fea398d330bccfa52f6e2a5a8e1ac6180fcb25c6de42ebc::coin::COIN": {
+      "id": "0x0c830e5d9be6e871492de1b98cb4a6bc385f3852f7d8f1d5c15b8cf094b0885b",
+      "decimals": 8,
+      "name": "Lorenzo Wrapped Bitcoin",
+      "symbol": "enzoBTC",
+      "description": "Lorenzo Wrapped Bitcoin",
+      "iconUrl": "https://assets.coingecko.com/coins/images/54447/standard/enzo_btc.png?1739773963"
+    },
+    "7a479e7a6e75323ac9125656a9ca795e11ea42165ac4206af44d1b66e9563be9::svbtc::SVBTC": {
+      "id": "0xcd066f2aeae464ed46f8e0e2861e0ebaf1350e2ba40a51c0a6c20e7cd0951886",
+      "decimals": 8,
+      "name": "Svalbard BTC",
+      "symbol": "SVBTC",
+      "description": "Sui LayerZero OFT representation of Svalbard BTC",
+      "iconUrl": "https://svalbard.capital/token-logo.jpg"
+    },
+    "0a672389b7b73df60d40666ac9545433d59d3128086b9e3a425a66bbffdf4dc5::susn::SUSN": {
+      "id": "0xb42c0d766514229edd75c7ffb1df5aad12ac5249a052cba99a3e180eb4380fb6",
+      "decimals": 6,
+      "name": "Staked USN",
+      "symbol": "sUSN",
+      "description": "Sui LayerZero OFT representation of Noon's staked USN (sUSN)",
+      "iconUrl": ""
     }
   }
 }

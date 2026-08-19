@@ -1,20 +1,26 @@
 {
-  "name": "@current-finance/examples",
+  "name": "@current-protocol/examples",
   "version": "0.0.1",
-  "description": "Examples for Current Finance SDK",
+  "description": "Examples for Current Protocol SDK",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "example:deposit": "tsx lending/deposit.ts",
+    "example:borrow": "tsx lending/borrow.ts",
+    "example:repay": "tsx lending/repay.ts",
+    "example:withdraw": "tsx lending/withdraw.ts",
+    "example:enter-and-deposit": "tsx lending/enter-and-deposit.ts"
+  },
   "dependencies": {
     "@cetusprotocol/aggregator-sdk": "1.4.2",
     "@mysten/sui": "2.15.0",
-    "@current-finance/current-sdk": "workspace:*",
+    "@current-protocol/current-sdk": "workspace:*",
     "dotenv": "^16.6.1"
   },
   "devDependencies": {
     "@types/node": "^18.19.130",
+    "@types/ws": "^8.18.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "eslint": "^9.32.0",
-    "globals": "^16.3.0"
+    "ws": "^8.21.0"
   }
 }

@@ -4,26 +4,25 @@ import {
   Market,
   Obligation,
   LendingClient,
-} from '@current-finance/current-sdk';
+} from '@current-protocol/current-sdk';
 import type { SuiClientTypes } from '@mysten/sui/client';
 
 import { getKeypair } from '../utils';
 import { Transaction } from '@mysten/sui/transactions';
-const NETWORK = 'mainnet';
+import { createOracleClient } from './oracle';
+
 const MARKET_NAME = 'MainMarket';
-const COIN_USDC =
-  '0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC';
-const AMOUNT_WITHDRAW_USDC = 12_000_000n;
-const OBLIGATION_OWNER_CAP_ID = ''; // TODO: Replace with your ObligationOwnerCap ID
+const COIN_USDC = '0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC';
+const AMOUNT_WITHDRAW_USDC = 15_000_000n;
+const OBLIGATION_OWNER_CAP_ID = process.env.OBLIGATION_OWNER_CAP!;
 
 async function withdraw() {
   if (!OBLIGATION_OWNER_CAP_ID.trim()) {
     throw new Error('Set OBLIGATION_OWNER_CAP_ID in this file');
   }
 
-  const client = LendingClient.fromConfig(
-    { network: NETWORK, pythEndpoint: 'https://hermes.pyth.network' },
-  );
+  const oracleClient = createOracleClient();
+  const client = LendingClient.fromConfig({ network: 'mainnet' }, oracleClient);
 
   const keypair = getKeypair();
   const sender = keypair.getPublicKey().toSuiAddress();
@@ -35,10 +34,18 @@ async function withdraw() {
 
   const obligationId = await client.query.getObligationIdFromOwnerCapId(OBLIGATION_OWNER_CAP_ID);
 
-  const marketInfo = getMarket(NETWORK, MARKET_NAME);
+  const marketInfo = getMarket('mainnet', MARKET_NAME);
   const emode = 0;
 
-  const market = await client.getEmodeGroupMarketSnapshot(marketInfo.type, emode);
+  const market = await client.getEmodeGroupMarketSnapshot(
+    marketInfo.type,
+    emode,
+    [
+      // price not important
+      { assetType: "0000000000000000000000000000000000000000000000000000000000000002::sui::SUI", price: 0 },
+      { assetType: "dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC", price: 0 },
+    ]
+  );
   const details = await client.getObligationDetail(obligationId, new Market(marketInfo.type, marketInfo.objectId, market.assets, market.emodeGroups, coinMetadatas));
   const obligation = new Obligation(details);
 
@@ -51,15 +58,16 @@ async function withdraw() {
     ctokenAmount = (deposit.ctokenAmount() * AMOUNT_WITHDRAW_USDC) / deposit.amount();
   }
 
+  const assets = new Set([...obligation.depositAssets(), ...obligation.borrowedAssets()]);
+
   const tx = new Transaction();
-  const allAssets = client.query.getAllAssetsInMarket(marketInfo.type);
   await client.populateWithdrawTransactionWithAssets(
     tx,
     marketInfo.objectId,
     marketInfo.type,
     OBLIGATION_OWNER_CAP_ID,
     COIN_USDC,
-    allAssets,
+    [...assets],
     ctokenAmount,
   );
 
@@ -76,4 +84,8 @@ async function withdraw() {
   console.log(`\nWithdraw transaction: ${digest}`);
 }
 
-withdraw().catch(console.error);
+if (import.meta.url.startsWith('file:')) {
+  withdraw().catch(console.error);
+}
+
+export { withdraw };
