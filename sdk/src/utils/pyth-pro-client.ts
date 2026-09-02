@@ -1,7 +1,4 @@
-import { Channel, PythLazerClient } from "@pythnetwork/pyth-lazer-sdk";
-import type { WebSocketPoolConfig } from "@pythnetwork/pyth-lazer-sdk/socket/websocket-pool";
 import { Transaction, TransactionObjectArgument } from "@mysten/sui/transactions";
-import { getNetworkConfig, SOURCE_ID } from "../config/networks";
 
 /** Deployed `pyth_lazer` package id x_oracle was published against (verify target). */
 export const PYTH_PRO_PACKAGE_ID =
