@@ -87,5 +87,3 @@ async function withdraw() {
 if (import.meta.url.startsWith('file:')) {
   withdraw().catch(console.error);
 }
-
-export { withdraw };

@@ -4,6 +4,7 @@
   "description": "Examples for Current Protocol SDK",
   "type": "module",
   "scripts": {
+    "example:refresh-oracle": "tsx lending/refresh-oracle.ts",
     "example:deposit": "tsx lending/deposit.ts",
     "example:borrow": "tsx lending/borrow.ts",
     "example:repay": "tsx lending/repay.ts",

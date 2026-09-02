@@ -58,5 +58,3 @@ async function borrow() {
 if (import.meta.url.startsWith('file:')) {
   borrow().catch(console.error);
 }
-
-export { borrow };
