@@ -25,6 +25,10 @@ The [`examples/`](./examples) directory contains end-to-end scripts for lending
 (enter market, deposit, borrow, repay, withdraw, market & obligation detail, …)
 and referrals (generate/look up codes, check status, claim rebates).
 
+After a confirmed MainMarket USDC partial repayment, the [repayment receipt](examples/lending/repayment-receipt/)
+explains how much you paid, how much your stored debt decreased, and how much
+interest accrued before the payment. The read-only example runs with Python 3.8+.
+
 ```bash
 pnpm install                       # from the repo root, if not done already
 cd examples

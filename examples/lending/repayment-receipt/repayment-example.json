@@ -1,0 +1,320 @@
+{
+  "transaction": {
+    "digest": "HEvKiEg7bLhR8cqXR6XZgzPDyoAajX86168VT4xSTsDk",
+    "effects": {
+      "status": "SUCCESS",
+      "timestamp": "2026-11-19T06:10:24.818Z",
+      "checkpoint": {
+        "sequenceNumber": 346828417
+      },
+      "events": {
+        "pageInfo": {
+          "hasNextPage": false
+        },
+        "nodes": [
+          {
+            "sequenceNumber": 0,
+            "contents": {
+              "type": {
+                "repr": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::repay::RepayEvent"
+              },
+              "json": {
+                "repayer": "0x65a0e90f2ae22c02f6316b1f77afaaae0b7093a671f3e01c4163ebc270c917a4",
+                "market": "fe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket",
+                "obligation": "0x54d65ceb45efc04c31dfb8322c1326c978e33b462ec34c03ef6c5dc27ac0ce62",
+                "asset": "dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
+                "amount": "9000000",
+                "total_borrow": {
+                  "value": "12016660491474160545374676124"
+                },
+                "borrow_index": {
+                  "value": "1025917417428945830"
+                },
+                "refund": "0",
+                "time": "1795068624"
+              }
+            }
+          }
+        ]
+      },
+      "objectChanges": {
+        "pageInfo": {
+          "hasNextPage": false
+        },
+        "nodes": [
+          {
+            "address": "0x296bad48a22775cf8e343acb2f33d2a6c0dfa1d160c40b6a2b0ba3cb92bf7e31",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::reserve::ReserveBalanceKey,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::reserve::ReserveBalance<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket,0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC>>"
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::reserve::ReserveBalanceKey,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::reserve::ReserveBalance<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket,0xdba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC>>"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "address": "0x359555d45e5288b7f92ad0d74b2871cba80666a3df8cb7f58d6fd742a61dbe08",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::obligation::ObligationOwnerCap"
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::obligation::ObligationOwnerCap"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "address": "0x41f3d76aee8b20e53f7d0d395fdc09e241e683c7bc5d0f69674b545ee42549df",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market::Market<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket>"
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market::Market<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket>"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "address": "0x5f9d9221b335f923cc561ec0d1ab8c0f7281066bff609440825e2a3c31e77b59",
+            "inputState": {
+              "version": 1092132576,
+              "owner": {
+                "address": {
+                  "address": "0xd34fc40d8fa86722cc8dc19f44d5cb9258d2baca45230b75648398aaf2f5fa7b"
+                }
+              },
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000001::type_name::TypeName,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::debt::Debt>"
+                  },
+                  "json": {
+                    "id": "0x5f9d9221b335f923cc561ec0d1ab8c0f7281066bff609440825e2a3c31e77b59",
+                    "name": "dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
+                    "value": {
+                      "amount": {
+                        "value": "12021545475445061620333076941"
+                      },
+                      "borrow_index": {
+                        "value": "1025566362564205143"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "version": 1097215424,
+              "owner": {
+                "address": {
+                  "address": "0xd34fc40d8fa86722cc8dc19f44d5cb9258d2baca45230b75648398aaf2f5fa7b"
+                }
+              },
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000001::type_name::TypeName,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::debt::Debt>"
+                  },
+                  "json": {
+                    "id": "0x5f9d9221b335f923cc561ec0d1ab8c0f7281066bff609440825e2a3c31e77b59",
+                    "name": "dba34672e30cb065b1f93e3ab55318768fd6fef66c15942c9f7cb846e2f900e7::usdc::USDC",
+                    "value": {
+                      "amount": {
+                        "value": "12016660491474160545374676124"
+                      },
+                      "borrow_index": {
+                        "value": "1025917417428945830"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          {
+            "address": "0x67ddfd5710b5c57a2fdae9b70ab13a1cb6c5d06f888ff3ad5bb3bb054586f29a",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::emode::DFKey<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::emode::EModeRateLimiter>,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::emode::EModeRateLimiter>"
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::emode::DFKey<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::emode::EModeRateLimiter>,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::emode::EModeRateLimiter>"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "address": "0x951dda91abeef724c9dba5cc8a4e604dbe22d7d77ab882ee85b140c558296313",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::coin::Coin<0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI>"
+                  }
+                }
+              }
+            },
+            "outputState": null
+          },
+          {
+            "address": "0xbbb9c5c9c852ca8f5e065df98336b5c6ef0a7ef8bca92f9fe273175e46e6e31a",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::coin::Coin<0x0000000000000000000000000000000000000000000000000000000000000002::sui::SUI>"
+                  }
+                }
+              }
+            },
+            "outputState": null
+          },
+          {
+            "address": "0xbdc6f58cad76fe6bdf5c10788ae6c1c20ebaa223aaabc7fb94185e83a88f5193",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000001::type_name::TypeName,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::reserve::Reserve<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket>>"
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000001::type_name::TypeName,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::reserve::Reserve<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket>>"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "address": "0xe412a33aa00fcde91cca4ecda3e641d18ebf305f84c509714166a27c040b8032",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000002::object::ID,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::liquidity_mining_reward_manager::ObligationRewardManager>"
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000002::object::ID,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::liquidity_mining_reward_manager::ObligationRewardManager>"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "address": "0xf119a7545c5c3182e70a91d2718220ce619672315fc3d24af64cff01b88aaa9d",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000001::type_name::TypeName,0xf01bf3d01c8f50247fdf597e3f565b865e00b4a20a01b353d44d71c993f36e9a::float::Decimal>"
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000001::type_name::TypeName,0xf01bf3d01c8f50247fdf597e3f565b865e00b4a20a01b353d44d71c993f36e9a::float::Decimal>"
+                  }
+                }
+              }
+            }
+          },
+          {
+            "address": "0xf4ce1c65a73e045701a475b0cd1987714301dbbbf4c4cced8a12daebccff5e6c",
+            "inputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000001::type_name::TypeName,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::liquidity_mining_reward_manager::PoolRewardManager>"
+                  }
+                }
+              }
+            },
+            "outputState": {
+              "asMoveObject": {
+                "contents": {
+                  "type": {
+                    "repr": "0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<0x0000000000000000000000000000000000000000000000000000000000000001::type_name::TypeName,0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::liquidity_mining_reward_manager::PoolRewardManager>"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "positionCheckpoint": 346828417,
+  "position": {
+    "address": "0x54d65ceb45efc04c31dfb8322c1326c978e33b462ec34c03ef6c5dc27ac0ce62",
+    "version": 1088074713,
+    "asMoveObject": {
+      "contents": {
+        "type": {
+          "repr": "0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::obligation::Obligation<0xfe1d8929d13b00aaecd7642dec1c6d41cab82882a1b139efa46bf61dfd6380bf::market_type::MainMarket>"
+        },
+        "json": {
+          "id": "0x54d65ceb45efc04c31dfb8322c1326c978e33b462ec34c03ef6c5dc27ac0ce62",
+          "debts": {
+            "table": {
+              "id": "0xd34fc40d8fa86722cc8dc19f44d5cb9258d2baca45230b75648398aaf2f5fa7b"
+            }
+          }
+        }
+      }
+    }
+  }
+}
